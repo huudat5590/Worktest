@@ -1,0 +1,59 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.6.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+
+bootJar {
+    baseName = 'work'
+    version =  '0.1.0'
+}
+
+war {
+    baseName = 'work'
+    version =  '0.0.1'
+    archiveName = 'work.war'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    compile 'org.xerial:sqlite-jdbc:3.8.11'
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+	compile group: 'commons-io', name: 'commons-io', version: '2.6'
+	compile 'commons-dbutils:commons-dbutils:1.7'
+	compile group: 'org.json', name: 'json', version: '20190722'
+	
+	compile 'com.google.code.gson:gson:2.3.1'
+	compile group: 'com.google.code.gson', name: 'gson', version: '2.6'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.7'
+    compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.9.7'
+    compile 'org.codehaus.jackson:jackson-core-asl:1.9.13'
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+	
+	
+	compile 'mysql:mysql-connector-java'
+	compile 'org.hibernate:hibernate-ehcache:5.0.12.Final'
+	compile 'org.springframework.boot:spring-boot-starter-data-jpa:1.5.16.RELEASE'
+	
+	
+}
+
+

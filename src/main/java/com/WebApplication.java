@@ -1,0 +1,31 @@
+package com;
+import java.util.Arrays;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class WebApplication {
+
+	public static void main(String[] args) {
+		try{
+			ApplicationContext ctx = SpringApplication.run(WebApplication.class, args);
+		
+			System.out.println("Let's inspect the beans provided by Spring Boot:");
+			
+			String[] beanNames = ctx.getBeanDefinitionNames();
+	        Arrays.sort(beanNames);
+	        for (String beanName : beanNames) {
+	            //System.out.println(beanName);
+	        }   
+
+	        
+	        
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+  
+    
+}

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" type="image/x-icon" href="https://mwg.vn/wp-content/uploads/2014/05/favicon-1.ico" />
+
+    <title>Upload App</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="style2.css">
+	
+	
+	<link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+	<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+	<link rel="stylesheet" href="css/jquery.fileupload.css">
+	<link rel="stylesheet" href="css/jquery.fileupload-ui.css">
+	<!-- CSS adjustments for browsers with JavaScript disabled -->
+	
+	<noscript><link rel="stylesheet" href="css/jquery.fileupload-noscript.css"></noscript>
+	<noscript><link rel="stylesheet" href="css/jquery.fileupload-ui-noscript.css"></noscript>
+    <!-- Scrollbar Custom CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+	<div id="text_loading"><p>Uploading <img src="ajax-loader.gif" /> </p></div>
+	<div class="header col-sm-12 " >
+		<div class="container"  style="margin: 0; max-width: 2422px;">
+			<nav class="navbar navbar-expand-lg">
+			  <a class="navbar-brand" href="home.html"><div class="logo"></div>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" style="text-align : right" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+				  <a class="nav-item nav-link" id="usershow" ><i class="fas fa-user-circle" style="margin-right: 4px"></i> </a>
+				  <a class="nav-item nav-link" onclick="logout()"  ><i class="fas fa-sign-out-alt" style="margin-right: 4px"></i> </a> 
+				</div>
+			  </div>
+			</nav>
+		</div>
+		
+		
+	</div>
+	
+    <div class="container wrapper row justify-content-md-center col-sm-12 col-md-12">
+		<!-- Page Content  -->
+		
+        <div class="col all_list-allow-user row  justify-content-center" >
+
+			<div  id="Admin" style="display: none">
+			<div class="col-sm-6" style="border-right: 1px solid #eaeaea; width: 50%; height: 100%;">
+					<h2>Danh sách user</h2>
+					<div class="listuser" id="listall">
+					</div>					
+			</div>
+			<div style="width: 50%; height: 100%;">
+					<h2 class="col" id="title">Thêm mới User</h2>
+					<div><button class="btn btn-primary pull-right" type="button" style="position: absolute; right: 31px;" onclick="newUser()"> Tạo mới</button></div>
+					<div class="form-group col-sm-12" style="margin-top: 50px">
+							<label for="usr">Họ và Tên :</label>
+							<input type="text" class="form-control" id="name">
+					</div>
+					<div class="form-group col-sm-12" style="margin-top: 20px">
+							<label for="usr">Username :</label>
+							<input type="number" class="form-control" id="userid">
+					</div>
+					<div class="form-group">
+							<div class="col-sm-offset-12 col-sm-10">
+							  <button  onclick="submitPost()" name="btnSubmit"  id="typepost" class="btn btn-success">Cập nhật</button>
+							</div>
+					</div>
+					<div class="form-group col-sm-12">
+						<label style="color: red" id="err"></label>
+					</div>
+					
+					
+			</div>
+			<div id="allApp2"></div>
+			</div>
+			<div id="NOT-ADMIN" style="display: none;font-size: 30px;margin-top: 10%">
+				<i class="fas fa-user-lock"></i>
+				Phân quyền của bạn không được phép
+			</div>
+		</div>
+		
+		
+    </div>
+	
+	<script type="text/javascript">
+	
+		var host = window.location.host;
+		var apiUrl = (host == "localhost:8085" ? "http://172.16.61.226:8080/file" : "https://adminapp.tgdd.vn/file");
+		var all_data = [];
+		var files = [];
+		var type_os = "ios";
+		var Appid = -1;
+		var token = localStorage.getItem('uploadAppFile');
+		var username = localStorage.getItem('username');
+		var type = "POST"; 
+
+		function checkAdmin(){
+			var data = {};
+			var checkValidate = false;
+			var err = true; 
+			         
+            if(username == null){
+				window.location.href = "login.html";
+			}
+			else{	
+				var bodyGetAll = {
+					'token' : token
+				}
+				$(document).ready(function() {
+					$.ajax({
+							url: apiUrl + '/checkauthen',
+							data: bodyGetAll,
+							type: 'GET',
+							headers: {
+										"Accept": "application/json",
+										"Content-Type": "application/x-www-form-urlencoded"
+							},						
+							success: function(success) {
+								if(success){									
+									$("#Admin").css("display", "contents")
+									$("#NOT-ADMIN").css("display", "none")
+								}else{
+									$("#Admin").css("display", "none")
+									$("#NOT-ADMIN").css("display", "block")
+									
+								}	
+							},
+							error: function(fail) {						
+								console.log(fail)
+							}
+						})
+				
+				});
+			}
+		}
+		function checkToken(){
+			var data = {};
+			var data_user = [];
+			var err = true;
+            var username = localStorage.getItem('username', username);
+			
+            if(username == null || token == null){
+				window.location.href = "login.html";
+			}
+			else{
+				let bodyAPI = {           
+					"username": username,    
+					"token" : token       
+				}
+				      
+				$(document).ready(function() {
+					$.ajax({
+							url: apiUrl+'/userdetail',
+							data: JSON.stringify(bodyAPI),
+							type: 'POST',
+							processData: false,
+							headers: {
+								"Authorization": 'Bearer ' + token,
+								"Content-Type": "application/json",        
+							},
+							success: function(success) {
+									document.getElementById("usershow").innerHTML ="Xin chào "+ success.object.lastName + success.object.firstName;	
+									checkAdmin();
+							},
+							error: function(fail) {
+								
+								console.log("Error", fail);	
+								logout();
+							}
+						})
+				
+				});
+			} 
+		}
+		
+		checkToken();
+
+		function newUser(){
+			document.getElementById("name").value = "";
+			document.getElementById("userid").value = "";
+			$("#title").text('Tạo mới User');
+			$("#typepost").text('Cập nhật');
+			type = "POST";
+		}
+
+		function editUser(data){
+			all_data.forEach((element)=> {
+				
+				if(element.userid == data){
+					
+					document.getElementById("name").value = element.username;
+					document.getElementById("userid").value = element.userid;
+					$("#typepost").text('Cập nhật');
+					$("#title").text('Cập nhật User');
+					type = "PUT";
+				}
+
+			});		
+		}
+
+		function removeUser(data){
+			
+			
+			all_data.forEach((element)=> {
+				if(element.userid == data){
+					document.getElementById("name").value = element.username;
+					document.getElementById("userid").value = element.userid;
+					$("#typepost").text('Xóa');
+					$("#title").text('Xóa User');
+					type = "DELETE";
+				}
+
+			});	
+		}
+
+		function logout(){
+			localStorage.removeItem('username');
+			localStorage.removeItem('uploadAppFile');
+			window.location.href = "login.html";
+		}
+
+		function getAllUser(){
+			var data = {};
+			var err = true;            			
+				var bodyGetAll = {
+					'token' : token
+				}
+				$(document).ready(function() {
+					$.ajax({
+							url: apiUrl+'/alllistuser',
+							data: bodyGetAll,
+							type: 'GET',
+							headers: {
+										"Accept": "application/json",
+										"Content-Type": "application/x-www-form-urlencoded"
+							},						
+							success: function(success) {
+								all_data = success;
+								success.forEach((exx , i) => {	
+									if(exx.username != null)		
+										document.getElementById("listall").innerHTML += "<p>"+exx.userid+ "-" + exx.username + "<a class='fas fa-user-edit iconx pull-right' style='cursor: pointer' onclick='editUser("+exx.userid+")'></a><a class='fas fa-trash-alt iconx pull-right' style='cursor: pointer' onclick='removeUser("+exx.userid+")'></a></p>";
+								});							
+							},
+							error: function(fail) {						
+								console.log(fail)
+							}
+						})
+				
+				});
+		}
+
+		getAllUser();
+		
+		function submitPost(){
+			var data = {};
+			var checkValidate = false;
+			var err = true;
+			var url = "";
+			
+			$(document).ready(function() {
+				
+				  var name = document.getElementById("name").value;
+				  var userid = document.getElementById("userid").value;
+				  
+			
+				  let bodyAPI = {
+					"userid" : userid,		           
+					"username": name	
+				  }
+				 
+				  if(name == undefined || name == ""){
+					checkValidate = true;
+					$( "#err" ).text( "Tên không được để trống");
+				  }else if(userid == ""){
+					checkValidate = true;
+					$( "#err" ).text( "User name không được để trống");
+				  }else {
+					checkValidate = false;
+				  }
+				   $( "#err" ).addClass( "error" );
+					if(!checkValidate){
+						if(type == "POST")
+							url = apiUrl+"/insertuser?token="+token;
+						else if(type == "PUT")
+							url = apiUrl+"/updateuser?token="+token;
+						else 
+							url = apiUrl+"/deleteuser?token="+token;		      
+					$(document).ready(function() {
+						$.ajax({
+								url: url,
+								data: JSON.stringify(bodyAPI),
+								type:type,	
+								headers: {
+									"Content-Type": "application/json"        
+								},
+								success: function(success) {
+								
+								},
+								error: function(fail) {
+									
+								$( "#text_loading" ).css("display","block");
+								$( "#text_loading" ).addClass( "loading" );
+								console.log(fail)
+								if(fail.status == 200 && fail.responseText != "Bad"){
+									$( "#err" ).text( "");
+									$( "#err" ).removeClass( "error" );
+									$( "#err" ).text( "Update thành công");
+									$( "#err" ).addClass( "success" );
+									
+									setTimeout(() => {
+										document.getElementById("listall").innerHTML = "";
+										getAllUser();
+										$( "#text_loading" ).removeClass( "loading" );
+										$( "#text_loading" ).css("display","none");	
+										if(type == "DELETE"){
+											newUser();
+										}
+										$("#err").text("");
+										//window.location.href = "admin.html"	
+									}, 3000);
+								}else{
+									$( "#err" ).text( "");
+									$( "#err" ).text( "Lỗi server");	
+									setTimeout(() => {
+										$( "#text_loading" ).removeClass( "loading" );
+										$( "#text_loading" ).css("display","none");	
+									}, 1000);	
+								}
+							}
+						})
+					});				
+					}
+			});
+			  
+		}
+		
+		function callAllList(){
+			var bodyGetAll = {
+					'token' : token
+			}
+			$( "#text_loading" ).css("display","block");
+			$( "#text_loading" ).addClass( "loading" );
+			$.ajax({
+			url: apiUrl+"/alllistapp",
+			data: bodyGetAll,
+			type: 'GET',
+			headers: {
+				"Accept": "application/json",
+				"Content-Type": "application/x-www-form-urlencoded"
+			},
+			success: function(success) {
+				all_data = success;
+				var count = 0;
+				$( "#text_loading" ).removeClass( "loading" );
+				$( "#text_loading" ).css("display","none");
+				if(success.length != 0 ){	
+					success.forEach(function(e,i){
+						var path_ios = "" , path_android = "";
+						
+						count++;
+						var urlImg = 'https://adminapp.tgdd.vn/updownloadfile/image'+e.iconpath;	
+						var classShow = !e.show ? 'image' : '';
+						var stateShow = e.show ? 'Hidden' : 'Show';
+						document.getElementById("allApp2").innerHTML += "<div class='  frame2 '><div style='height : 100px' class='top-frame'><img class='"+classShow+"' id='"+e.id+"' style='height : 90px' src='" + urlImg + "'  alt=''></div><p class=''>"+e.name+"</p><button class='showApp btn btn-success' onclick='showApp("+e.id+","+e.show+")'>"+stateShow+"</button>"
+						
+						
+						
+					})
+					
+				}else {
+					    document.getElementById("allApp2").innerHTML = "<h1 style='margin-top:15%'>Bạn chưa tạo app nào , chọn tạo mới để khởi tạo</h1>"
+				}
+
+				if(count == 0){
+						document.getElementById("allApp2").innerHTML = "";
+						document.getElementById("allApp2").innerHTML = "<h1 style='margin-top:15%'>Bạn chưa tạo app nào , chọn tạo mới để khởi tạo</h1>"
+				}
+				
+			},
+			error: function(fail) {
+				setTimeout(() => {
+					$( "#text_loading" ).removeClass( "loading-small" );
+					$( "#text_loading" ).css("display","none");		
+				}, 200);
+			}
+		 }) 
+		}
+		
+		callAllList();
+
+		function showApp(id,state){			
+			var data = {};
+			var err = true;            			
+			var stateShow = state != undefined ? (state ? 0 : 1) : 1;
+			
+				$(document).ready(function() {
+					$.ajax({
+							url: apiUrl+"/show?"+$.param({ 'show': stateShow , 'id' : id , 'token' : token  }),
+							data: {},
+							type: 'POST',
+							headers: {
+										"Accept": "application/json",
+										"Content-Type": "application/x-www-form-urlencoded"
+							},						
+							success: function(success) {
+								console.log();								
+							},
+							error: function(fail) {						
+								
+								if(fail.status == 200){
+									var classShow = stateShow == 0 ? '' : 'image'
+									document.getElementById("allApp2").innerHTML = "";
+									callAllList();
+								}
+							}
+						})
+				
+				});
+		}
+	</script>
+	
+<!-- The template to display files available for download -->
+
+</body>
+
+</html>

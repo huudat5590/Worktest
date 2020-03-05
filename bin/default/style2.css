@@ -1,0 +1,406 @@
+/*
+    DEMO STYLE
+*/
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+    font-family: 'Poppins', sans-serif;
+    background: white;
+    padding: 0 !important;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+.header {
+	background: #000;
+}
+.header nav {
+	margin-top: 0;
+	background: #000;
+	
+}
+.header nav > * {
+	color: #fff
+}
+.header nav a {
+	padding-right: 20px !important;
+    padding-left: 20px !important;
+}
+.logo {
+	background: url('https://cdn.thegioididong.com/v2015/Content/desktop/images/V4/icondesktop@1x.png?v=001') top left no-repeat;
+	width: 156px;
+    height: 30px;
+}
+@media (min-width: 992px) {
+	.header .navbar-nav {
+		display: table !important;
+		margin-left: auto;
+	}
+	.header .navbar-collapse a {
+		float: left;
+	}
+	#navbarNavAltMarkup .navbar-brand {
+		display: none !important;
+	}
+}
+
+.head {
+	background : #192F3D !important;
+	height : 80px;
+	color  : white;
+	
+}
+.logo {
+	height : 30px;
+	width : 156px;
+	
+	
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+   
+    background: #fff;
+    border: none;
+    border-radius: 0;
+	margin-top: 62px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+.list-unstyled components {
+	border-bottom: 1px solid #95959587;
+}
+
+#sidebar {
+    width: 250px;
+    top: 30%;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: white;
+    color: black;
+    transition: all 0.3s;
+	box-shadow: 0px -2px 6px 0px grey;
+	
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #fed700;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    
+}
+
+#sidebar ul p {
+    color: black;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: black;
+    background: #FAFAFA;
+}
+
+
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #fed700;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: black;
+    color: #7386D5;
+}
+
+a.article,
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: calc(100% - 250px);
+    background : white;
+   
+    transition: all 0.3s;
+    position: absolute;
+    top: 60;
+    right: 0;
+}
+
+#content.active {
+    width: 100%;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #content {
+        width: 100%;
+    }
+    #content.active {
+        width: calc(100% - 250px);
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+.allapp {
+    display : flex;
+    width: 100%;
+    flex-wrap: wrap;
+    
+}
+.frame {
+	height : 400px;
+    width : 100%;
+    max-width: 350px;
+	justify-content: center;
+	border-bottom : 2px solid #FDD504;
+	border-radius : 15px;
+	background : white;
+	margin: 20px;
+	box-shadow : 0px 0px 6px #7b7b7b;
+}
+.frame img {
+    width: 70px;
+    margin: 20px auto;
+    padding-top: 20px;
+    display: table;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.frame .icon {
+	
+    font-size: 100px;
+    padding: 40px 30px;
+    
+}
+.top-frame{
+    width: 100%;
+    height: 30%;
+    text-align: center;
+}
+.bottom-frame {
+    /* width: 100%; */
+    height: 40%;
+    text-align: center;
+}
+.bottom-frame img {
+    display: inline-block;
+    
+    width: 100px;
+}
+.frame .edit {
+	top : 10px;
+	right : 10px;
+	opacity : 0.3;
+	position : absolute;
+}
+.frame p {
+     font-size: 30px;
+     font-weight: bold;
+     color: #000;
+	 text-align : center;
+}
+.modal-content {
+	height : auto;
+	width: 1000px;
+    left: -110px;
+	padding-top :20px;
+}
+.remove_btn {
+	position: absolute;
+    margin-top: 46px;
+    z-index: 9;
+    left: 50%;
+}
+.bottom-frame img:hover  {
+	-webkit-animation: slide-top 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940)  alternate-reverse both;
+	        animation: slide-top 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940)  alternate-reverse both;
+}
+
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+}
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100x);
+            transform: translateY(-10px);
+  }
+}
+.modal-open {
+    overflow: unset;
+}
+label {
+    font-weight: 600;
+}
+.error {
+    text-align: center;
+    color: red !important;
+    font-size: 20px;
+    background: #f1f0f0;
+}
+.success {
+    text-align: center;
+    color: green !important;
+    font-size: 20px;
+    background: #f1f0f0;
+}
+#text_loading {
+    display: none;
+}
+.loading {
+    width: 100%;
+    height: 400%;
+    z-index: 99999;
+    background: #192F3D;
+    opacity: 0.7;
+    position: absolute;
+}
+.loading-small{
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    background: #192F3D;
+    opacity: 0.7;
+    position: absolute;
+}
+
+.loading  p {
+   
+    padding-top: 20%;
+    font-size: 30px;
+    text-align:  center;
+    color: #FAFAFA;
+   
+}
+.all_list-allow-user {
+    width: 100%;
+    height: 400px;
+    border: 1px solid #eaeaea;
+    margin: 20px 0 0 30px;
+    border-radius: 5px;
+}
+.listuser {
+    height: 100%;
+    overflow: auto;
+    width: 100%;  
+}
+.listuser .iconx {
+    margin-left: 20px;
+    justify-content: flex-end;
+}
+.frame-login {
+    width: 500px;
+    height: 120%;
+    margin-top: 100px;
+    justify-content: center;
+    display: grid;
+}
+
+.frame-login img  {
+    width: 280px;
+    padding-bottom: 30px;
+    top: 20px; 
+}
+.bglg {
+    background: url('https://login.thegioididong.com/Content/assets/pages/media/bg/4.jpg') center center no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}

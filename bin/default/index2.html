@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Collapsible sidebar using Bootstrap 4</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="style2.css">
+	
+	
+	<link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+	<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+	<link rel="stylesheet" href="css/jquery.fileupload.css">
+	<link rel="stylesheet" href="css/jquery.fileupload-ui.css">
+	<!-- CSS adjustments for browsers with JavaScript disabled -->
+	
+	<noscript><link rel="stylesheet" href="css/jquery.fileupload-noscript.css"></noscript>
+	<noscript><link rel="stylesheet" href="css/jquery.fileupload-ui-noscript.css"></noscript>
+    <!-- Scrollbar Custom CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+	<div class="header col-sm-12 " >
+		<div class="container">
+			<nav class="navbar navbar-expand-lg">
+			  <a class="navbar-brand" href="#"><div class="logo"></div>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" style="text-align : right" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+				  <a class="nav-item nav-link active" href="#">App</span></a>
+				  <a class="nav-item nav-link" data-toggle='modal' data-target='.bd-example-modal-lg' onclick="newApp(-1)"  href="#">Tạo mới</a>
+				  <a class="nav-item nav-link" href="#"><i class="fas fa-user-circle" style="margin-right: 4px"></i> Quản trị</a>
+				</div>
+			  </div>
+			</nav>
+		</div>
+		
+	</div>
+	
+    <div class="container wrapper row justify-content-md-center col-sm-12 col-md-12" style="padding: 5%">
+		<!-- Page Content  -->
+		
+        <div class="col allapp  justify-content-center" id="allApp" >
+
+			<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-lg">
+				<div class="modal-header" style="background : white ; width : 1000px; left : -110px;position : relative">
+					<h5 class="modal-title"><i class="fas fa-cloud-upload-alt"></i>   <span id="new"></span> </h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+				 </div>
+
+				<div class="modal-content">
+				  <div id="fileupload">
+						<!-- Redirect browsers with JavaScript disabled to the origin page -->
+						
+						<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+						<div class=" fileupload-buttonbar">
+							<div class="form-group col-sm-12" >
+							  <label for="usr">Chọn HĐH:</label>
+								 <label id="type_os" >
+									<input type="radio" name="options" id="option1" onchange="ios()" autocomplete="off" checked> IOS
+								  </label>
+								  <label class="">
+									<input type="radio" onclick="" name="options" onchange="android()" id="option2" autocomplete="off"> Andorid
+								  </label>
+							</div>
+							
+							<div class="form-group col-sm-12">
+							  <label for="usr">Tên App :</label>
+							  <input type="text" class="form-control" id="AppName">
+							</div>
+							
+							<div class="form-group col-sm-12 row">
+								<div class="col-sm-6" id="fileIcon">
+										<label for="exampleFormControlFile1">Chọn Icon</label>
+										<input accept="image/png, image/jpeg" type="file" class="form-control-file alert alert-primary" id="icon" name="icon">
+								</div>
+								<div class="col-sm-6" id="fileApp">
+										<label class="" for="exampleFormControlFile1">Chọn File</label>
+										<input accept=".ipa , .apk" type="file" class="form-control-file alert alert-primary" oninput="checkfile()"   id="file" name="file">
+								</div>
+							 </div>
+							 
+							
+							 
+							 <div class="form-group col-sm-12" id="url_show" style="display : none">
+							  <label for="usr">URL CHPlay :</label>
+							  <input type="text" class="form-control" oninput="checktext()" id="new_path_anroid_chplay">
+							 </div>
+							<div class="form-group">
+								<div class="col-sm-offset-12 col-sm-10">
+								  <button id="submit" onclick="submitPost()" name="btnSubmit " class="btn btn-success">Upload</button>
+								</div>
+							 </div>
+						</div>
+						<!-- The table listing the files available for upload/download -->
+						<table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+					</div>
+				</div>
+			  </div>
+			</div>
+  
+        </div>
+		
+    </div>
+	<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+		<div class="slides"></div>
+		<h3 class="title"></h3>
+		<a class="prev">‹</a>
+		<a class="next">›</a>
+		<a class="close">×</a>
+		<a class="play-pause"></a>
+		<ol class="indicator"></ol>
+	</div>
+	<script type="text/javascript">
+		var apiUrl = 'http://172.16.61.211:8080/updownloadfile/file/alllistapp';
+		var all_data = [];
+		var files = [];
+		var type_os = "ios";
+		
+		fetch(apiUrl).then(response => {
+		  return response.json();
+		}).then(data => {
+		
+		  // Work with JSON data here
+		  all_data = data;	 
+		  all_data.forEach(function(e , i) {	
+			  console.log(e)
+			var urlImg = 'https://app.tgdd.vn/data/transferdata/icontransfer.png';
+			document.getElementById("allApp").innerHTML += "<div class='col-sm-5 col-md-4 col-xs-12 col-12  frame '><div class='top-frame'><img src='" + urlImg + "'  alt=''></div><p>"+e.name+"</p>"+
+			"<div class='bottom-frame'><img class='hvr-wobble-vertical' src='https://app.tgdd.vn/img/google-play.png' onclick='editApp("+e.id+','+'123' + ")' data-toggle='modal' data-target='.bd-example-modal-lg' >"+
+			"<img class='hvr-wobble-vertical' src='https://app.tgdd.vn/img/mac-os.png' onclick='editApp("+e.id+','+'456' + ")' data-toggle='modal' data-target='.bd-example-modal-lg' >";
+			
+		  });
+			 document.getElementById("allapp").addEventListener("click", function(){
+			  console.log("Page location is " + window.location.pathname )
+			 
+			});
+		  
+		  console.log(data);
+		}).catch(err => {
+		  // Do something for an error here
+		});
+		function android() {
+		 	  document.getElementById("url_show").style.display = "block";
+			  type_os = 'android';
+		};
+		function ios() {
+			  document.getElementById("url_show").style.display = "none";
+			  type_os = 'ios';
+		};
+		function checktext(e) {
+		$(document).ready(function() {
+		  tmpval = $('#url').val();
+		 
+		  if (tmpval != '') {
+			document.getElementById("fileApp").style.display = "none";
+		  }else {
+			document.getElementById("fileApp").style.display = "block";
+		  }  
+		 
+		});
+		};
+		function checkfile(e) {
+		$(document).ready(function() {
+		  tmpval = $('#file').val();
+		 
+		  if (document.getElementById("file").files.length == 1) {
+			document.getElementById("url_show").style.display = "none";
+		  }else {
+			document.getElementById("url_show").style.display = "block";
+		  }  
+		  
+		});
+		};
+		function editApp(id,os){
+			console.log(os)
+			all_data.forEach(function(e , i) {	
+				if(id== e.id && id != -1){
+					document.getElementById("AppName").value = e.name;
+					
+					$( "#iconuploaded" ).last().html( e.iconpath );
+					$( "#appuploaded" ).last().html( e.path_android_apk );
+				}
+				
+			})
+			document.getElementById("new").innerHTML = "";
+			document.getElementById("new").innerHTML +='Cập nhật upload app';
+		}
+		function newApp(id){
+			document.getElementById("new").innerHTML = "";
+			document.getElementById("new").innerHTML +='Upload App mới';
+		}
+		function removeFile() {
+		 	  document.getElementById("file").value = "";
+		};
+		function removeIcon() {
+		 	  document.getElementById("icon").value = "";
+		};
+		
+		function submitPost(){
+			var data = {};
+			$(document).ready(function() {
+			
+				  //event.preventDefault();
+				  var AppName = document.getElementById("AppName").value;
+				  var icon = document.getElementById("icon").files[0];
+				  var file = document.getElementById("file").files[0];
+				  var new_path_anroid_chplay = document.getElementById("new_path_anroid_chplay").value;
+				  var formData = new FormData()
+				  formData.append('icon', icon);
+				  formData.append('file', file);
+				  formData.append('Appid', -1);
+				  formData.append('AppName', AppName);
+				  formData.append('osfile', type_os);
+				  formData.append('newpath_android_chplay', new_path_anroid_chplay);
+
+					$.ajax({
+						url: 'http://172.16.61.211:8080/updownloadfile/file/upload',
+						data: formData,
+						type: 'POST',
+						headers: {},
+						contentType: false,
+						processData: false,
+						success: function(success) {
+							console.log(success)
+						},
+						error: function(fail) {
+							console.log(fail)
+						}
+					})		  
+			});
+			  
+		}
+		$(document).ready(function(e){
+			
+			
+		});
+		
+		
+	</script>
+	
+<!-- The template to display files available for download -->
+
+</body>
+
+</html>
