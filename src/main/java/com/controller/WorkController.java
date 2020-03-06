@@ -39,6 +39,27 @@ public List <Work> findAll() {
 return WorkRepsitory.findAll();
 }
 
+//List all
+@RequestMapping(value="/findbyid",method = RequestMethod.GET,produces="application/json;charset=UTF-8")
+@ResponseBody
+public List <Work> findbyid1(@RequestParam Integer workid) {
+
+	try {
+
+		List<Work> works = WorkRepsitory.CountById1(workid);
+ 		
+		
+				return works;
+		
+	
+		}catch(Exception ex ) {
+			
+			return new  ArrayList<Work>();
+		}
+}
+
+
+
 
 //List all by sorting and pageable
 @RequestMapping(value="/findAllbypage",method = RequestMethod.GET,produces="application/json;charset=UTF-8")
@@ -102,7 +123,7 @@ public String deleteuserlist(@RequestBody List<Work> requestBody) {
 try {
 
 	WorkRepsitory.deleteAll(requestBody);				
-		return "Deleted Successful" + requestBody.toString();
+		return "Deleted Successful";
 
 }catch(Exception ex ) {
 	return "Delete Failed" + ex.toString();

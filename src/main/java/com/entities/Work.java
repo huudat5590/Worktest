@@ -1,5 +1,10 @@
 package com.entities;
 
+import java.io.IOException;
+import java.io.Serializable;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,11 +16,15 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.google.gson.annotations.Expose;
 
 @Entity
 @Table(name="Work")
-public class Work {
+public class Work implements Serializable{
 	
 public Work() {
 		
@@ -40,6 +49,7 @@ public void setStatus(String status) {
 }
 
 //@CreationTimestamp
+@JsonDeserialize(using = DateHandler.class)
 @Temporal(TemporalType.TIMESTAMP)
 @Expose
 @Column(name="endingdate", length=256)
@@ -47,6 +57,7 @@ private java.util.Date endingdate;
 
 
 //@CreationTimestamp
+@JsonDeserialize(using = DateHandler.class)
 @Temporal(TemporalType.TIMESTAMP)
 @Expose
 @Column(name="startingdate", length=256)

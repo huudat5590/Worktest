@@ -47,6 +47,7 @@ dependencies {
     compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.9.7'
     compile 'org.codehaus.jackson:jackson-core-asl:1.9.13'
     compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+    compile group: 'com.zaxxer', name: 'HikariCP', version: '3.3.1'
 	
 	
 	compile 'mysql:mysql-connector-java'
