@@ -65,6 +65,7 @@ public class MvcWebConfig implements WebMvcConfigurer {
 	
 	
 	private static final String[] RESOURCE_LOCATIONS = {
+			"classpath:/META-INF/",
 			"classpath:/META-INF/resources/", "classpath:/resources/",
 			"classpath:/static/", "classpath:/public/", "classpath:/resources/templates/","classpath:/templates/"};
 	@Override

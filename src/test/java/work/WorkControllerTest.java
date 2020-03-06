@@ -153,7 +153,7 @@ public class WorkControllerTest extends AbstractTest {
 	   
       String uri = "/work/deletebylist";
       Work work = new Work();
-      work.setWorkid(82);  // change workid if you want
+      work.setWorkid(82);  // change workid if not match.
       work.setWorkname("GingerMan");
       work.setStatus("Doing");
       

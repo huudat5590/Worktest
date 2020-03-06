@@ -1,4 +1,4 @@
-package com;
+/*package com;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -26,4 +26,4 @@ public class WebController {
     
     
     
-}
+}*/
