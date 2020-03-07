@@ -89,9 +89,8 @@ public List <Work> findAllbypage(@RequestParam(defaultValue = "0") Integer pageN
 // Update
 @RequestMapping(value="/updatesbylist", method = RequestMethod.PUT,produces="application/json;charset=UTF-8")
 @ResponseBody
-public String updateuserList(@RequestBody List<Work> requestBody) {
+public String updatebyList(@RequestBody List<Work> requestBody) {
 try {
-String UserListUpdate = "";
 if(!requestBody.isEmpty()) {
 	WorkRepsitory.saveAll(requestBody);
 		return "Save Successful";
@@ -102,7 +101,7 @@ return "No records have been saved";
 }
 }
 
-//Update
+//Add new
 @RequestMapping(value="/add", method = RequestMethod.POST,produces="application/json;charset=UTF-8")
 @ResponseBody
 public String addnew(@RequestBody Work requestBody) {

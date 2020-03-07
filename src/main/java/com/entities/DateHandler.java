@@ -23,6 +23,6 @@ public Date deserialize(JsonParser jsonparser, DeserializationContext context) t
 
 { 	
 	String date = jsonparser.getText(); 
-	try { SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); return sdf.parse(date); 
+	try { SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); return sdf.parse(date); 
 	} catch (Exception e) { return null; } } }
 

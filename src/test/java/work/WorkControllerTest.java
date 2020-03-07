@@ -106,15 +106,18 @@ public class WorkControllerTest extends AbstractTest {
    public void updateWorkbylist() throws Exception {
       String uri = "/work/updatesbylist";
 
-	  
-	  
+
+	  /*
 	  java.util.Date dt = new java.util.Date();
 
-	  java.text.SimpleDateFormat sdf = 
+	 java.text.SimpleDateFormat sdf = 
 	       new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	   
 	  String currentTime = sdf.format(dt);
-	  Date  savetime = sdf.parse(currentTime.trim());
+	  Date  savetime = sdf.parse(currentTime.trim());*/
+      
+      Calendar cal = Calendar.getInstance();
+	    Date date=cal.getTime();
 	  
 	  
 	  
@@ -123,9 +126,9 @@ public class WorkControllerTest extends AbstractTest {
 	  Work work3 = new Work();
 	  
 	  
-	  work1.setStatus("Planing");work1.setEndingdate(savetime);work1.setWorkname("obc0");
-	  work2.setStatus("Planing");work2.setEndingdate(savetime);work2.setWorkname("obc1");
-	  work3.setStatus("Planing");work3.setEndingdate(savetime);work3.setWorkname("obc2");
+	  work1.setStatus("Planing");work1.setEndingdate(date);work1.setWorkname("obc0");
+	  work2.setStatus("Planing");work2.setEndingdate(date);work2.setWorkname("obc1");
+	  work3.setStatus("Planing");work3.setEndingdate(date);work3.setWorkname("obc2");
 	
 	  
 	  List<Work> works = new ArrayList<Work>() ;
@@ -133,7 +136,7 @@ public class WorkControllerTest extends AbstractTest {
 	  works.add(work2);
 	  works.add(work3);
 	  
-      String inputJson =  new Gson().toJson(works);
+      String inputJson =  mapToJson(works);//new Gson().toJson(works);
      
       MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.put(uri)
          .contentType(MediaType.APPLICATION_JSON_VALUE)

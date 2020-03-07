@@ -49,18 +49,18 @@ public void setStatus(String status) {
 }
 
 //@CreationTimestamp
-@JsonDeserialize(using = DateHandler.class)
+//@JsonDeserialize(using = DateHandler.class)
 @Temporal(TemporalType.TIMESTAMP)
 @Expose
-@Column(name="endingdate", length=256)
+@Column(name="endingdate", columnDefinition="DATETIME",length=256)
 private java.util.Date endingdate;
 
 
 //@CreationTimestamp
-@JsonDeserialize(using = DateHandler.class)
+//@JsonDeserialize(using = DateHandler.class)
 @Temporal(TemporalType.TIMESTAMP)
 @Expose
-@Column(name="startingdate", length=256)
+@Column(name="startingdate", columnDefinition="DATETIME",length=256)
 private java.util.Date startingdate;
 
 

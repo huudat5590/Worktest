@@ -1,6 +1,8 @@
 package work;
 
 import java.io.IOException;
+import java.util.List;
+
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,6 +33,12 @@ public abstract class AbstractTest {
       ObjectMapper objectMapper = new ObjectMapper();
       return objectMapper.writeValueAsString(obj);
    }
+   
+   protected String mapToJson(List<Object> obj) throws JsonProcessingException {
+	      ObjectMapper objectMapper = new ObjectMapper();
+	      return objectMapper.writeValueAsString(obj);
+	   }
+   
    protected <T> T mapFromJson(String json, Class<T> clazz)
       throws JsonParseException, JsonMappingException, IOException {
       
